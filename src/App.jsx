@@ -1,18 +1,21 @@
-import { useState } from 'react'
-import Navbar from './Components/Navbar'
-import Hero from './Components/Hero'
-import MostViewed from './Components/MostViewed'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home, About, Catogary, Communities, Contact } from './pages'
+import ProductPage from './pages/ProductPage';
 
-function App() {
+const App = () => {
   return (
-    <>
-      <main className='h-full w-full bg-[#f7e8da]'>
-        <Navbar />
-        <Hero />
-        <MostViewed />
-      </main>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:slug" element={<ProductPage />} /> {/* Dynamic route */}
+        <Route path="/about" element={<About />} />
+        <Route path="/catogary" element={<Catogary />} />
+        <Route path="/communities" element={<Communities />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;

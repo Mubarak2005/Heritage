@@ -4,3 +4,7 @@
     font-family: 'nayuki';
     src: url('./Fonts/nayuki.ttf') format('truetype');
   }
+
+  :root {
+    --primary-color: #f7e8da;
+}
