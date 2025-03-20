@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'nayuki';
+    src: url('./Fonts/nayuki.ttf') format('truetype');
+  }
