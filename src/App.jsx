@@ -9,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:slug" element={<ProductPage />} /> {/* Dynamic route */}
+        {/* <Route path="/cart" element={<CartPage />} /> Dynamic route */}
         <Route path="/about" element={<About />} />
         <Route path="/catogary" element={<Catogary />} />
         <Route path="/communities" element={<Communities />} />
