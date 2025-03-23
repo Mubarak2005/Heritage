@@ -5,6 +5,9 @@
     src: url('./Fonts/nayuki.ttf') format('truetype');
   }
 
-  :root {
+  /* :root {
     --primary-color: #f7e8da;
+} */
+body{
+  background-color: #f7e8da;
 }

@@ -17,7 +17,7 @@ const MostViewed = () => {
                   <h1 className='text-xl font-[nayuki] '>{product.title}</h1>
               </div>
               <div className='flex justify-between'>
-                  <h1>{product.price}</h1>
+                  <h1>₹{product.price}</h1>
               </div>
             </div>
           ))}

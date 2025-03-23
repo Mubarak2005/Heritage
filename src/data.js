@@ -87,4 +87,5 @@ export const products = [
     artisan: "Neha Das",
     location: "Tripura",
   },
+  
 ];
