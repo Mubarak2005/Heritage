@@ -1,30 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../data"; 
+import { db } from "../pages/auth/firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import Navbar from "../Components/Navbar";
 import Loading from "../Components/Loading";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
-import '/src/fonts.css'; // Adjust path as needed
-
+import '/src/fonts.css';
 
 const ProductPage = () => {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
+  const [randomProducts, setRandomProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundProduct = products.find((p) => p.slug === slug);
-    setTimeout(() => {
-      setProduct(foundProduct);
-      setLoading(false);
-    }, 1000); 
+    const fetchProduct = async () => {
+      try {
+        const q = query(collection(db, "products"), where("slug", "==", slug));
+        const querySnapshot = await getDocs(q);
+        
+        if (!querySnapshot.empty) {
+          const productData = querySnapshot.docs[0].data();
+          setProduct(productData);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      }
+    };
+
+    const fetchRandomProducts = async () => {
+      try {
+        const productsRef = collection(db, "products");
+        const querySnapshot = await getDocs(productsRef);
+        const allProducts = querySnapshot.docs.map(doc => doc.data());
+        const filtered = allProducts.filter(p => p.slug !== slug);
+        const shuffled = filtered.sort(() => 0.5 - Math.random());
+        setRandomProducts(shuffled.slice(0, 4));
+      } catch (error) {
+        console.error("Error fetching random products:", error);
+      }
+    };
+
+    fetchProduct();
+    fetchRandomProducts();
   }, [slug]);
 
   if (loading) {
     return (
       <div className="flex items-center justify-center w-full min-h-screen bg-[var(--primary-color)]">
-        {/* <h1 className="text-4xl font-bold text-[#222]">Loading...</h1> */}
         <Loading />
       </div>
     );
@@ -38,13 +64,6 @@ const ProductPage = () => {
       </div>
     );
   }
-
-  const getRandomProducts = (count) => {
-    const filteredProducts = products.filter((p) => p.slug !== slug);
-    return filteredProducts.sort(() => 0.5 - Math.random()).slice(0, count);
-  };
-
-  const randomProducts = getRandomProducts(4);
 
   return (
     <div className="flex-1 items-center w-full min-h-screen justify-center p-10 bg-[var(--primary-color)]">
@@ -73,7 +92,7 @@ const ProductPage = () => {
             <div className="seller-details mt-10">
               <h2 className="text-4xl font-bold">Seller Details</h2>
               <div className="seller flex flex-col">
-                <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <IoPersonCircleSharp />{product.artisan}</p>
+                <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <IoPersonCircleSharp />{product.artist}</p>
                 <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <MdLocationPin/> {product.location}</p>
               </div>
             </div>

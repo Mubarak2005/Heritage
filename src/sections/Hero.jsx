@@ -5,15 +5,15 @@ import { MdArrowOutward } from "react-icons/md";
 const Hero = () => {
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className='h-screen w-full font-["nayuki"] flex flex-col justify-center items-center relative overflow-hidden'>
         <h1 className='text-[5vw] leading-none'>Preserving Culture,</h1>
         <h1 className='text-[5vw] leading-none'>Empowering</h1>
         <h1 className='text-[5vw] leading-none'>Artisans</h1>
         <div className='px-20 py-5 mt-5 text-2xl rounded-full bg-[#dfb68d] cursor-pointer'>
-                Explore
-                <MdArrowOutward className='inline-block ml-2 text-4xl' />
-            </div>
+          Explore
+          <MdArrowOutward className='inline-block ml-2 text-4xl' />
+        </div>
         <div className='w-54 absolute left-10 top-40 border-[1px] border-[#000] p-3 '>
           <img src="https://shop.gaatha.com/image/catalog/Chanchal-Soni/02-phad-painting-2cc.jpg" alt="" />
         </div>
@@ -26,7 +26,7 @@ const Hero = () => {
         <div className=' absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] opacity-[.08]'>
           <img className='w-80 scale-[6] ' src="/images/design/line_pattern.png" alt="" />
         </div>
-    </div>
+      </div>
     </>
   )
 }

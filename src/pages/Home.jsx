@@ -1,6 +1,5 @@
 import React from 'react';
-import Hero from '../sections/Hero';
-import MostViewed from '../sections/MostViewed';
+import { Hero, MostViewed } from '../sections';
 
 const Home = () => {
   return (

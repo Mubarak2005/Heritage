@@ -1,8 +1,31 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { products } from "../data"
 import { MdOutlineArrowDownward } from "react-icons/md";
 
+// Firebase imports
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../pages/auth/firebase'
+
 const MostViewed = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'products'))
+        const productsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        setProducts(productsData)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
   return (
     <div className='min-h-screen w-full font-[Raleway] px-10'>
         <h1 className=''>Most Viewed</h1>
