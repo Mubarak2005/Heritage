@@ -5,8 +5,20 @@ const Communities = () => {
   return (
     <>
     <Navbar />
-    <div className="flex items-center justify-center h-screen  bg-[var(--primary-color)]">
-      <h1 className='text-7xl font-bold text-[#222222]'>Community</h1>
+    <div className="min-h-screen w-full">
+      <div className='h-[50vh] w-full flex flex-col justify-end items-center '>
+        <h1 className='text-[5vw] leading-none font-[nayuki] '>Meet the Makers: </h1>
+        <h1 className='text-[5vw] leading-none font-[nayuki] '>Stories from Our Tribal Artisans</h1>
+      </div>
+      <div className='flex justify-between flex-wrap mt-20'>
+      {Array(9).fill(0).map((_, index) => (
+        <div 
+          key={index} 
+          className='h-[60vh] w-full md:w-1/2 lg:w-1/3 flex justify-center items-center font-[nayuki] border-[1px] border-[#3f27104c]'>
+            Community {index + 1}
+        </div>
+      ))}
+      </div>
     </div>
   </>
   )
