@@ -5,6 +5,8 @@ import Navbar from "../Components/Navbar";
 import Loading from "../Components/Loading";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
+import '/src/fonts.css'; // Adjust path as needed
+
 
 const ProductPage = () => {
   const { slug } = useParams();
@@ -16,7 +18,7 @@ const ProductPage = () => {
     setTimeout(() => {
       setProduct(foundProduct);
       setLoading(false);
-    }, 1000); // Simulate loading time
+    }, 1000); 
   }, [slug]);
 
   if (loading) {
@@ -30,9 +32,9 @@ const ProductPage = () => {
 
   if (!product) {
     return (
-      <div className="flex flex-col items-center w-full min-h-screen justify-center p-10 bg-[var(--primary-color)]">
-        <h1 className="text-3xl font-bold mt-5 text-[#222]">404</h1>
-        <h1 className="text-7xl font-bold mt-5 text-[#222]">Product not found</h1>
+      <div className="font-[Raleway] flex flex-col items-center w-full min-h-screen justify-center p-10 bg-[var(--primary-color)]">
+        <h1 className="text-7xl font-bold mt-5 text-[#222]">404</h1>
+        <h1 className="text-4xl font-bold mt-5 text-[#222]">Product not found</h1>
       </div>
     );
   }
@@ -59,17 +61,17 @@ const ProductPage = () => {
           <div className="right w-[60%] font-[Raleway] h-10/12 border-[1px] border-[#000] px-8 py-2 relative">
             <h1 className="text-2xl font-light mt-5 text-gray-500">{product.category}</h1>
             <div className="flex justify-between items-center w-full"> 
-              <h1 className="text-5xl font-bold mt-5"> {product.title}</h1>
+              <h1 className="text-5xl mt-5 font-[nayuki] "> {product.title}</h1>
               <p className="text-2xl text-gray-700 mt-2">₹{product.price}</p>
             </div>
 
             <hr className="w-[100%] h-1 my-10" />
             <p className="text-2xl  mt-2 font-normal ">
-              <span className="text-5xl font-bold">Description</span> <br />
+              <span className="text-4xl font-bold">Description</span> <br />
               {product.description}
             </p>
             <div className="seller-details mt-10">
-              <h2 className="text-5xl font-bold">Seller Details</h2>
+              <h2 className="text-4xl font-bold">Seller Details</h2>
               <div className="seller flex flex-col">
                 <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <IoPersonCircleSharp />{product.artisan}</p>
                 <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <MdLocationPin/> {product.location}</p>
@@ -85,10 +87,11 @@ const ProductPage = () => {
 
       {/* Random Products Section */}
       <div className="mt-10">
-        <h2 className="text-2xl font-bold mb-5">You may also like</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <h2 className="text-4xl capitalize font-[nayuki]  font-bold mb-5">You may also like</h2>
+        <div className="font-[Raleway] grid grid-cols-2 md:grid-cols-4 gap-6">
           {randomProducts.map((randomProduct) => (
-            <div key={randomProduct.slug} className="border p-4 rounded-lg cursor-pointer" onClick={
+            <div key={randomProduct.slug} className="border p-4 rounded-lg
+             cursor-pointer" onClick={
               () => window.location.href = `/product/${randomProduct.slug}`
               }>
                 <img
@@ -96,7 +99,7 @@ const ProductPage = () => {
                   alt={randomProduct.title}
                   className="w-full h-100 object-cover rounded-md"
                 />
-                <h3 className="text-lg font-semibold mt-2">{randomProduct.title}</h3>
+                <h3 className="text-lg font-[nayuki] mt-2">{randomProduct.title}</h3>
                 <p className="text-gray-600">₹{randomProduct.price}</p>
             </div>
           ))}
