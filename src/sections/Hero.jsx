@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <>
     <Navbar />
-      <div className='h-screen w-full font-["nayuki"] flex flex-col justify-center items-center relative'>
+      <div className='h-screen w-full font-["nayuki"] flex flex-col justify-center items-center relative overflow-hidden'>
         <h1 className='text-[5vw] leading-none'>Preserving Culture,</h1>
         <h1 className='text-[5vw] leading-none'>Empowering</h1>
         <h1 className='text-[5vw] leading-none'>Artisans</h1>
@@ -22,6 +22,9 @@ const Hero = () => {
         </div>
         <div className='w-60 absolute right-40 bottom-20 border-[1px] border-[#000] p-3'>
           <img src="https://mandalameadow.com/wp-content/uploads/2020/06/Traditional-art-and-crafts-in-India-_-Warli-Art.jpg" alt="" />
+        </div>
+        <div className=' absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[-1] opacity-[.08]'>
+          <img className='w-80 scale-[6] ' src="/images/design/line_pattern.png" alt="" />
         </div>
     </div>
     </>

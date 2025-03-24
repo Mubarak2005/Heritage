@@ -5,7 +5,7 @@ import MostViewed from '../sections/MostViewed';
 const Home = () => {
   return (
     <>
-      <div className='bg-[var(--primary-color)]'>
+      <div>
         <Hero />
         <MostViewed />
       </div>

@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../data"; // Import product data
+import { products } from "../data"; 
 import Navbar from "../Components/Navbar";
+import Loading from "../Components/Loading";
 
 const ProductPage = () => {
-  const { slug } = useParams(); // Get the slug from URL
-  const product = products.find((p) => p.slug === slug); // Find product by slug
+  const { slug } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const foundProduct = products.find((p) => p.slug === slug);
+    setTimeout(() => {
+      setProduct(foundProduct);
+      setLoading(false);
+    }, 1000); // Simulate loading time
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full min-h-screen bg-[var(--primary-color)]">
+        {/* <h1 className="text-4xl font-bold text-[#222]">Loading...</h1> */}
+        <Loading />
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -16,18 +35,16 @@ const ProductPage = () => {
     );
   }
 
-  // Randomizing products (excluding the current one)
   const getRandomProducts = (count) => {
-    const filteredProducts = products.filter((p) => p.slug !== slug); // Exclude current product
-    return filteredProducts.sort(() => 0.5 - Math.random()).slice(0, count); // Shuffle & take 'count' items
+    const filteredProducts = products.filter((p) => p.slug !== slug);
+    return filteredProducts.sort(() => 0.5 - Math.random()).slice(0, count);
   };
 
-  const randomProducts = getRandomProducts(4); // Get 5 random products
+  const randomProducts = getRandomProducts(4);
 
   return (
     <div className="flex-1 items-center w-full min-h-screen justify-center p-10 bg-[var(--primary-color)]">
       <Navbar />
-      {/* Product Details */}
       <div className="product w-full h-screen mt-16">
         <div className="flex justify-start items-start gap-10 w-full h-full flex-col md:flex-row">
           <div className="left h-10/12 w-[40%]">
@@ -37,7 +54,7 @@ const ProductPage = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="right w-[60%] h-10/12 border-[1px] border-[#000] px-8 py-2 relative">
+          <div className="right w-[60%] font-[Raleway] h-10/12 border-[1px] border-[#000] px-8 py-2 relative">
             <h1 className="text-2xl font-light mt-5 text-gray-500">{product.category}</h1>
             <div className="flex justify-between items-center w-full"> 
               <h1 className="text-5xl font-bold mt-5">{product.title}</h1>
@@ -45,16 +62,15 @@ const ProductPage = () => {
             </div>
 
             <hr className="w-[100%] h-1 my-10" />
-
-            {/* <p className="text-2xl text-gray-700 mt-2">{product.category}</p> */}
-            <div>
-              <p className="text-2xl text-[#222222] mt-2 font-normal "><span className="text-5xl font-bold">Description</span> <br />{product.description}</p>
-            </div>
+            <p className="text-2xl  mt-2 font-normal ">
+              <span className="text-5xl font-bold">Description</span> <br />
+              {product.description}
+            </p>
             <div className="seller-details mt-10">
               <h2 className="text-5xl font-bold">Seller Details</h2>
               <div className="seller flex gap-12">
-                <p className="text-2xl text-[#222222] mt-2 font-normal ">{product.artisan}</p>
-                <p className="text-2xl text-[#222222] mt-2 font-normal ">{product.location}</p>
+                <p className="text-2xl mt-2 font-normal ">{product.artisan}</p>
+                <p className="text-2xl mt-2 font-normal ">{product.location}</p>
               </div>
             </div>
             <div className="buyings flex justify-between items-center w-full mt-10 absolute bottom-0 left-0">
