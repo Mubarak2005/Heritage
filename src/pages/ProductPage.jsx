@@ -70,7 +70,7 @@ const ProductPage = () => {
         <h2 className="text-2xl font-bold mb-5">You may also like</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {randomProducts.map((randomProduct) => (
-            <div key={randomProduct.slug} className="border p-4 rounded-lg shadow-lg cursor-pointer hover:drop-shadow-xl hover:shadow-[#8a7b6d]" onClick={
+            <div key={randomProduct.slug} className="border p-4 rounded-lg cursor-pointer" onClick={
               () => window.location.href = `/product/${randomProduct.slug}`
               }>
                 <img

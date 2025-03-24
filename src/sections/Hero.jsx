@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
+import { MdArrowOutward } from "react-icons/md";
 
 const Hero = () => {
   return (
@@ -9,8 +10,9 @@ const Hero = () => {
         <h1 className='text-[5vw] leading-none'>Preserving Culture,</h1>
         <h1 className='text-[5vw] leading-none'>Empowering</h1>
         <h1 className='text-[5vw] leading-none'>Artisans</h1>
-        <div className='px-20 py-5 mt-5 text-2xl rounded-full bg-[#dfb68d]'>
+        <div className='px-20 py-5 mt-5 text-2xl rounded-full bg-[#dfb68d] cursor-pointer'>
                 Explore
+                <MdArrowOutward className='inline-block ml-2 text-4xl' />
             </div>
         <div className='w-54 absolute left-10 top-40 border-[1px] border-[#000] p-3 '>
           <img src="https://shop.gaatha.com/image/catalog/Chanchal-Soni/02-phad-painting-2cc.jpg" alt="" />
