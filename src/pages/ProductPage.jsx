@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { products } from "../data"; 
 import Navbar from "../Components/Navbar";
 import Loading from "../Components/Loading";
+import { IoPersonCircleSharp } from "react-icons/io5";
+import { MdLocationPin } from "react-icons/md";
 
 const ProductPage = () => {
   const { slug } = useParams();
@@ -57,7 +59,7 @@ const ProductPage = () => {
           <div className="right w-[60%] font-[Raleway] h-10/12 border-[1px] border-[#000] px-8 py-2 relative">
             <h1 className="text-2xl font-light mt-5 text-gray-500">{product.category}</h1>
             <div className="flex justify-between items-center w-full"> 
-              <h1 className="text-5xl font-bold mt-5">{product.title}</h1>
+              <h1 className="text-5xl font-bold mt-5"> {product.title}</h1>
               <p className="text-2xl text-gray-700 mt-2">₹{product.price}</p>
             </div>
 
@@ -68,9 +70,9 @@ const ProductPage = () => {
             </p>
             <div className="seller-details mt-10">
               <h2 className="text-5xl font-bold">Seller Details</h2>
-              <div className="seller flex gap-12">
-                <p className="text-2xl mt-2 font-normal ">{product.artisan}</p>
-                <p className="text-2xl mt-2 font-normal ">{product.location}</p>
+              <div className="seller flex flex-col">
+                <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <IoPersonCircleSharp />{product.artisan}</p>
+                <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row"> <MdLocationPin/> {product.location}</p>
               </div>
             </div>
             <div className="buyings flex justify-between items-center w-full mt-10 absolute bottom-0 left-0">
