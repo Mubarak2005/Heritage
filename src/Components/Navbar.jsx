@@ -37,6 +37,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
+            <li className="your-nav-item-class"><a href="/catogary">Category</a></li>
+            <li className="your-nav-item-class"><a href="/communities">Communities</a></li>
             <li className="your-nav-item-class"><a href="/login">Login</a></li>
             <li className="your-nav-item-class"><a href="/signup">Signup</a></li>
           </>

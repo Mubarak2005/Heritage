@@ -4,7 +4,7 @@ import { Hero, MostViewed } from '../sections';
 const Home = () => {
   return (
     <>
-      <div>
+      <div >
         <Hero />
         <MostViewed />
       </div>
