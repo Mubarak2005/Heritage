@@ -53,9 +53,9 @@ const AdminDesh = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen p-8 pt-20">
+      <div className="min-h-screen p-8 pt-20 w-full">
         <h1 className="text-3xl font-bold mb-8">Add New Product</h1>
-        <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
+        <form onSubmit={handleSubmit} className="w-9xl space-y-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <div>
             <label className="block mb-2">Slug (URL-friendly name)</label>
             <input
