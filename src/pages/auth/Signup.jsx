@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from '../../Components/Navbar'
 
 // Firebase Imports
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, db } from './firebase'
 import { setDoc, doc } from 'firebase/firestore' 
 import { toast } from 'react-toastify'
+import { GoogleAuthProvider } from 'firebase/auth'
 
 const Signup = () => {
   const [name, setName] = useState('')
@@ -28,6 +29,8 @@ const Signup = () => {
         await setDoc(doc(db, 'Users', user.uid), {
           name,
           email,
+          cart: [],         // Added cart array
+          favourite: [],   // Added favourite array
           createdAt: new Date()
         })
       }
@@ -50,11 +53,22 @@ const Signup = () => {
     console.log('Signup attempt with:', name, email, password)
   }
 
-  // Google signup function
-  const handleGoogleSignup = () => {
-    // Add Google signup logic here
-    console.log('Google signup attempted')
-  }
+  // Google login function
+    const handleGoogleLogin = async (user) => {
+      try {
+        const provider = new GoogleAuthProvider()
+        await signInWithPopup(auth, provider)
+        console.log(user)
+        toast.success('Signed in with Google successfully', {
+          position: 'top-center'
+        })
+        navigate('/')
+      } catch (error) {
+        toast.error(error.message, {
+          position: 'bottom-center'
+        })
+      }
+    }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[--primary-color]">
@@ -148,7 +162,7 @@ const Signup = () => {
 
             <button
               type="button"
-              onClick={handleGoogleSignup}
+              onClick={handleGoogleLogin}
               className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
