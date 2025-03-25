@@ -12,6 +12,7 @@ const AdminDesh = () => {
     description: '',
     price: '',
     forSale: false,
+    community: '',
     category: '',
     artist: '',
     location: ''
@@ -41,6 +42,7 @@ const AdminDesh = () => {
         description: '',
         price: '',
         forSale: false,
+        community: '',
         category: '',
         artist: '',
         location: ''
@@ -123,6 +125,18 @@ const AdminDesh = () => {
               type="text"
               name="location"
               value={formData.location}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2">Community</label>
+            <input
+              type="text"
+              name="community"
+              value={formData.community}
               onChange={handleChange}
               className="w-full p-2 border rounded"
               required

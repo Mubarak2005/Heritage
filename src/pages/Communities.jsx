@@ -14,7 +14,7 @@ const Communities = () => {
       {Array(9).fill(0).map((_, index) => (
         <div 
           key={index} 
-          className='h-[60vh] w-full md:w-1/2 lg:w-1/3 flex justify-center items-center font-[nayuki] border-[1px] border-[#3f27104c]'>
+          className='h-[60vh] w-full md:w-1/2 lg:w-1/3 flex justify-center items-center font-[nayuki] border-[1px] border-[#3f27104c] cursor-pointer'>
             Community {index + 1}
         </div>
       ))}

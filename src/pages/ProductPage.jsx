@@ -137,6 +137,9 @@ const ProductPage = () => {
                 <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row">
                   <MdLocationPin /> {product.location}
                 </p>
+                <p className="text-2xl mt-2 font-normal flex items-center gap-2 flex-row">
+                  {product.community}
+                </p>
               </div>
             </div>
             <div className="buyings flex justify-between items-center w-full mt-10 absolute bottom-0 left-0">
