@@ -81,7 +81,7 @@ const ProductPage = () => {
             <h1 className="text-2xl font-light mt-5 text-gray-500">{product.category}</h1>
             <div className="flex justify-between items-center w-full"> 
               <h1 className="text-5xl mt-5 font-[nayuki] "> {product.title}</h1>
-              <p className="text-2xl text-gray-700 mt-2">₹{product.price}</p>
+              <p className="text-2xl text-[#3f2710] mt-2">₹{product.price}</p>
             </div>
 
             <hr className="w-[100%] h-1 my-10" />
@@ -119,7 +119,7 @@ const ProductPage = () => {
                   className="w-full h-100 object-cover rounded-md"
                 />
                 <h3 className="text-lg font-[nayuki] mt-2">{randomProduct.title}</h3>
-                <p className="text-gray-600">₹{randomProduct.price}</p>
+                <p className="text-[#3f2710] ">₹{randomProduct.price}</p>
             </div>
           ))}
         </div>

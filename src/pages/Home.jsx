@@ -1,5 +1,6 @@
 import React from 'react';
 import { Hero, MostViewed } from '../sections';
+import Category from '../sections/Category';
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       <div >
         <Hero />
         <MostViewed />
+        <Category />
       </div>
     </>
   );

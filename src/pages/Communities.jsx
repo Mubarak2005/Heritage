@@ -14,8 +14,10 @@ const Communities = () => {
       {Array(9).fill(0).map((_, index) => (
         <div 
           key={index} 
-          className='h-[60vh] w-full md:w-1/2 lg:w-1/3 flex justify-center items-center font-[nayuki] border-[1px] border-[#3f27104c]'>
-            Community {index + 1}
+          className='h-[60vh] w-full md:w-1/2 lg:w-1/3 flex flex-col justify-end items-start p-5 font-[nayuki] border-[1px] border-[#3f27104c]'>
+            <h1 className='text-3xl'>Community {index + 1}</h1>
+            <p className='font-[Raleway] '>Rajpipla, Gujarat</p>
+
         </div>
       ))}
       </div>
