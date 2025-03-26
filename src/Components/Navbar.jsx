@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Nav2 from "./Nav2";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -25,7 +26,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full font-[Raleway] font-medium py-4 backdrop-blur-sm flex justify-between items-center px-10 fixed z-[100] top-0 left-0 ">  {/* Keep your existing navbar styles */}
+    <>
+      <nav className="w-full font-[Raleway] font-medium py-4 backdrop-blur-sm flex justify-between items-center px-10 fixed z-[100] top-0 left-0 ">  {/* Keep your existing navbar styles */}
       <h1 className="font-[nayuki] text-xl cursor-pointer"><a href="/">Logo</a></h1>
       <ul className="flex items-center gap-7">
         <li className="your-nav-item-class"><a href="/">Home</a></li>
@@ -45,6 +47,8 @@ const Navbar = () => {
         )}
       </ul>
     </nav>
+    <Nav2 />
+    </>
   );
 };
 
