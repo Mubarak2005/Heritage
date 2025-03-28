@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../pages/auth/firebase";
 import { collection, query, where, getDocs, updateDoc, arrayUnion, doc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import Firebase Auth
@@ -11,6 +11,7 @@ import "/src/fonts.css";
 
 const ProductPage = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [randomProducts, setRandomProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -98,12 +99,20 @@ const ProductPage = () => {
     }
   };
 
+  const handlePlaceOrder = () => {
+    if (product.id) {
+      navigate(`/invoice/${product.id}`); // Pass product ID to the invoice page
+    } else {
+      alert("Error: Product not found.");
+    }
+  };
+
   return (
     <div className="flex-1 items-center w-full min-h-screen justify-center p-10 bg-[var(--primary-color)]">
       <Navbar />
       <div className="product w-full min-h-screen mt-16">
         <div className="flex justify-start items-start gap-10 w-full h-full flex-col md:flex-row">
-          <div className="left h-full xl:h-10/12 w-full xl:w-[40%] relative">
+          <div className="left h-full xl:h-[54rem] w-full xl:w-[40%] relative">
             <img
               src={product.image}
               alt={product.title}
@@ -143,7 +152,7 @@ const ProductPage = () => {
               </div>
             </div>
             <div className="buyings flex justify-between items-center w-full mt-10 absolute bottom-0 left-0">
-              <button className="border-[#000] border-[2px] w-[80%] h-24 border-r-0 cursor-pointer hover:bg-[#222222] hover:text-white">
+              <button onClick={handlePlaceOrder} className="border-[#000] border-[2px] w-[80%] h-24 border-r-0 cursor-pointer hover:bg-[#222222] hover:text-white">
                 Buy Now
               </button>
               <button className="border-[#000] border-[2px] w-[20%] h-24 cursor-pointer hover:bg-[#222222] hover:text-white">

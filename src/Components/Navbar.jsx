@@ -34,7 +34,9 @@ const Navbar = () => {
         
         {user ? (
           <>
-            <li className="your-nav-item-class"><a href="/account">Account</a></li>
+            {/* <li className="your-nav-item-class"><a href="/account">Account</a></li> */}
+            <li className="your-nav-item-class"><a href="/catogary">Category</a></li>
+            <li className="your-nav-item-class"><a href="/communities">Communities</a></li>
             <li className="your-nav-item-class cursor-pointer"><button onClick={handleLogout}>Logout</button></li>
           </>
         ) : (
