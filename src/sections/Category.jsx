@@ -5,7 +5,7 @@ const Category = () => {
     <div className='h-screen w-full font-[nayuki] flex px-10 mt-40 gap-5'>
         <div className='h-full w-1/2 flex flex-col gap-5'>
             <div className='h-1/4 w-full flex justify-center items-center '>
-                <h1 className='text-7xl '>Categories</h1>
+                <h1 className='text-7xl '>Mubarak</h1>
             </div>
             <div className='h-1/2 w-full text-4xl relative cursor-pointer flex justify-center items-center rounded-3xl overflow-hidden bg-[url(https://muselot.in/cdn/shop/articles/gond_painting.jpg?v=1676631899)] bg-cover '>
                 <div className='h-full w-full bg-[#00000098] '></div>
